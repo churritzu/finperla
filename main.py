@@ -1,7 +1,6 @@
-
-class Main():
-	def __init__(self):
-		print("We are ready to rumble!!!")
+from modules.incomes.Income import Income
+from modules.cli.CLIargs import CLIArgs
 
 if __name__ == "__main__":
-		Main()
+	args = CLIArgs().getArgs()
+	print(args)
