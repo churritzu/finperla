@@ -1,12 +1,12 @@
 import argparse
 
 class CLIArgs:
-	_args = None
-
-	def __init__(self):
-		parser = argparse.ArgumentParser(description='FinPerla CLI.')
-		parser.add_argument("-i", "--income", metavar="", type=None, help="Create and income")
-		parser.add_argument("-e", "--expense", metavar="", type=None, help="Create an expense")
-		self._args = parser.parse_args()
 	
+	def __init__(self):
+		self._parser = argparse.ArgumentParser(description='FinPerla CLI.')
+		self._parser.add_argument("-i", "--income", action="store_true", help="Create and income")
+		self._parser.add_argument("-e", "--expense", action="store_true", help="Create an expense")
+		self._args = self._parser.parse_args()
+	
+	def getParser(self): return self._parser
 	def getArgs(self): return self._args
