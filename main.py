@@ -6,9 +6,11 @@ from modules.databases.DatabaseInit import DatabaseInit
 from os import path
 
 def init():
+	# Check if the config file exist's, it's not create one
 	confFile = path.exists("./config.cfg")
 	if(not confFile): Settings.createSettingsFile(True)
 
+	# Check Database Status and Type
 	DatabaseInit.checkDbStatus()
 
 if __name__ == "__main__":
