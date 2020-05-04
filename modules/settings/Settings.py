@@ -6,6 +6,7 @@ class Settings:
 		"debug": "true"
 	}
 	config['db'] = {
+		'dbType': "sqllite", # Options: sqllite, mysql
 		'dbName': "finperla",
 		'dbHost': "localhost",
 		'dbPort': "3306"
