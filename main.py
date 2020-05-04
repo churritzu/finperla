@@ -1,6 +1,7 @@
 from modules.incomes.CLIIncome import CLIIncome
 from modules.settings.Settings import Settings
 from modules.cli.CLIargs import CLIArgs
+from modules.databases.DatabaseInit import DatabaseInit
 
 from os import path
 
@@ -8,6 +9,7 @@ def init():
 	confFile = path.exists("./config.cfg")
 	if(not confFile): Settings.createSettingsFile(True)
 
+	DatabaseInit.checkDbStatus()
 
 if __name__ == "__main__":
 	init()
