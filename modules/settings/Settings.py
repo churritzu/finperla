@@ -12,8 +12,8 @@ class Settings:
 	}
 
 	@staticmethod
-	def createSettingsFile():
-		response = input("Are you sure you want to reset the configuration file? (yes|no) ")
+	def createSettingsFile(creating=False):
+		response = "yes" if creating else input("Are you sure you want to reset the configuration file? (yes|no) ")
 		if(response == 'yes' or response == "y"):
 			with open("./config.cfg", "w") as f:
 				Settings.config.write(f)

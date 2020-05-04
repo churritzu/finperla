@@ -2,7 +2,15 @@ from modules.incomes.CLIIncome import CLIIncome
 from modules.settings.Settings import Settings
 from modules.cli.CLIargs import CLIArgs
 
+from os import path
+
+def init():
+	confFile = path.exists("./config.cfg")
+	if(not confFile): Settings.createSettingsFile(True)
+
+
 if __name__ == "__main__":
+	init()
 	cliargs = CLIArgs()
 	args = cliargs.getArgs()
 	
