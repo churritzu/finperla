@@ -1,3 +1,4 @@
+from modules.incomes.Income import Income
 import datetime
 import re
 
@@ -12,10 +13,7 @@ class CLIIncome():
 		self.setDate()
 		self.setDescription()
 
-		print(self._amount)
-		print(self._date)
-		print(self._desc)
-		print(self.getDate())
+		self.save()
 
 	def getAmount(self): return self._amount
 	
@@ -48,6 +46,24 @@ class CLIIncome():
 
 	def setDescription(self):
 		self._desc = input("Description of the transaction:\n")
+
+	def getDictionary(self):
+		return {
+			"amount": self.getAmount(),
+			"trans_date": self.getDate(),
+			"description": self.getDescription()
+		}
+
+	def save(self):
+		print("Amount: " + str(self.getAmount()))
+		print("Date: " + self.getDate())
+		print("Descripcion: " + self.getDescription())
+		response = input("\n** Are you sure you want to save this income? (Y/n)")
+		
+		if not response or response.lower() == "y" or response.lower() == "yes":
+			Income(**self.getDictionary()).save()
+		else:
+			print("Canceling Income...")
 
 	def __checkDateFormat(self, str):
 		# YYYY-mm-dd Format
